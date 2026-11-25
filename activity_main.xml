@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hudRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080B0F"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- TOP TELEMETRY BAR -->
+    <LinearLayout
+        android:id="@+id/topTelemetryBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#0E131A"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/statusPulseDot"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="#00E5FF" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/hudTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.16"
+                android:text="SAMAR // TACTICAL HUD"
+                android:textColor="#E6F1FF"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hudSubStatusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.08"
+                android:text="CORE ONLINE  |  ACCESSIBILITY: STANDBY"
+                android:textColor="#7D8FA3"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/hudModeTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#151D28"
+            android:fontFamily="monospace"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="V.01"
+            android:textColor="#00E5FF"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- RAZOR DIVIDER -->
+    <View
+        android:id="@+id/topDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="#1D2733"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topTelemetryBar" />
+
+    <!-- CENTER HUD MONITOR -->
+    <LinearLayout
+        android:id="@+id/hudMonitorPanel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="14dp"
+        android:background="#0C1016"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/quickActionStrip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topDivider">
+
+        <!-- Monitor Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.12"
+                android:text="[ TELEMETRY &amp; RESPONSE STREAM ]"
+                android:textColor="#4FA3B8"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/hudLatencyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="00ms"
+                android:textColor="#58697D"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="14dp"
+            android:background="#161F2A" />
+
+        <!-- Scrollable Readout -->
+        <ScrollView
+            android:id="@+id/hudScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/hudLastCommandText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="> AWAITING INPUT"
+                    android:textColor="#6B7E93"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/hudResponseText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="5dp"
+                    android:text="SAMAR online. Try not to break the interface before we even start."
+                    android:textColor="#E6F1FF"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Bottom Monitor Micro-Footer -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="#161F2A" />
+
+        <TextView
+            android:id="@+id/hudActionLogText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="monospace"
+            android:maxLines="1"
+            android:text="SYS.LOG: HUD initialized // zero widgets"
+            android:textColor="#475669"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- QUICK TACTICAL STRIP -->
+    <LinearLayout
+        android:id="@+id/quickActionStrip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/commandDeck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnAccessibility"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="#101720"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.08"
+            android:text="ACCESSIBILITY"
+            android:textAllCaps="true"
+            android:textColor="#00E5FF"
+            android:textSize="11sp" />
+
+        <Button
+            android:id="@+id/btnLocalModel"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_weight="1.15"
+            android:background="#101720"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.04"
+            android:text="LOCAL AI"
+            android:textAllCaps="true"
+            android:textColor="#7CE7C3"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/btnClearHud"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="#101720"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.08"
+            android:text="CLEAR LOG"
+            android:textAllCaps="true"
+            android:textColor="#8FA3B8"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- COMMAND DECK -->
+    <LinearLayout
+        android:id="@+id/commandDeck"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#0E131A"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/hudCommandInput"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="#080B0F"
+            android:fontFamily="monospace"
+            android:hint="Enter directive..."
+            android:imeOptions="actionSend"
+            android:inputType="textCapSentences"
+            android:paddingHorizontal="12dp"
+            android:singleLine="true"
+            android:textColor="#E6F1FF"
+            android:textColorHint="#4A5A6D"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnMicTrigger"
+            android:layout_width="48dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="6dp"
+            android:background="#131C26"
+            android:fontFamily="monospace"
+            android:padding="0dp"
+            android:text="MIC"
+            android:textColor="#00E5FF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnSendCommand"
+            android:layout_width="64dp"
+            android:layout_height="46dp"
+            android:background="#00B8D4"
+            android:fontFamily="monospace"
+            android:padding="0dp"
+            android:text="RUN"
+            android:textColor="#06090D"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

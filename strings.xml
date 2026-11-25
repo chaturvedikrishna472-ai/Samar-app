@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SAMAR</string>
+    <string name="accessibility_service_description">SAMAR ko screen ke visible text ko samajhne aur aapke approved commands par supported UI actions karne ke liye accessibility access deta hai. Screen content processing sensitive ho sakti hai; ise sirf tab enable karein jab aap SAMAR ko ye access dena chahte hain.</string>
+</resources>
